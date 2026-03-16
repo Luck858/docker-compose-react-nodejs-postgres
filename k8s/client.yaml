@@ -22,7 +22,7 @@ spec:
         - name: dockerhub-secret
       containers:
         - name: client
-          image: DOCKERHUB_USERNAME/client:IMAGE_TAG
+          image: DOCKER_USERNAME/client:IMAGE_TAG
           ports:
             - containerPort: 4173
           env:
