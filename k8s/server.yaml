@@ -18,9 +18,11 @@ spec:
       labels:
         app: server
     spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
       initContainers:
         - name: migrate
-          image: ACR_LOGIN_SERVER/server:IMAGE_TAG
+          image: DOCKERHUB_USERNAME/server:IMAGE_TAG
           command: ["npx", "prisma", "migrate", "deploy"]
           env:
             - name: DATABASE_URL
@@ -30,7 +32,7 @@ spec:
                   key: DATABASE_URL
       containers:
         - name: server
-          image: ACR_LOGIN_SERVER/server:IMAGE_TAG
+          image: DOCKERHUB_USERNAME/server:IMAGE_TAG
           ports:
             - containerPort: 8000
           env:

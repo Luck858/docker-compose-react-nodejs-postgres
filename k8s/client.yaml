@@ -18,9 +18,11 @@ spec:
       labels:
         app: client
     spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
       containers:
         - name: client
-          image: ACR_LOGIN_SERVER/client:IMAGE_TAG
+          image: DOCKERHUB_USERNAME/client:IMAGE_TAG
           ports:
             - containerPort: 4173
           env:
